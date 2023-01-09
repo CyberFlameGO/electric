@@ -137,7 +137,7 @@
 [endloop]
 
 [shell pg_1]
-    !SELECT * FROM public.items WHERE conent = 'hello from satellite_1';
+    !SELECT * FROM public.items;
     ?$psql
     """?
                   id                  |        content         | content_text_nu

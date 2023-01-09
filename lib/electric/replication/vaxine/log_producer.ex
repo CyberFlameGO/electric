@@ -260,6 +260,8 @@ defmodule Electric.Replication.Vaxine.LogProducer do
   @spec process_message(vx_wal_txn()) ::
           {:ok, {Electric.Replication.Changes.Transaction.t(), term()}} | {:error, term()}
   defp process_message(vaxine_tx) do
+    Logger.info("txxx: #{inspect(vaxine_tx)}")
+
     with {:ok, metadata} <- TransactionBuilder.extract_metadata(vaxine_tx),
          {:ok, tx} <- TransactionBuilder.build_transaction(vaxine_tx, metadata) do
       {:ok, {tx, elem(vaxine_tx, 3)}}
